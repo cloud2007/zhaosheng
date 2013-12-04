@@ -1,0 +1,80 @@
+@charset "utf-8";
+body{padding:0; margin:0 auto; font-size:12px; font-family:Verdana;background-color: #f8fcff;}
+#logo{width:900px; margin:30px auto; text-align:center; font-size:36px}
+#con{ width:800px; margin-top:20px;}
+#left {background-image:url(../images/login_bg.jpg);background-repeat: no-repeat;float: left;text-align:left;height: 377px;width: 232px;}
+#login{height: 377px;width:336px;float: left;background-image: url(../images/login_bgline.gif);background-repeat: repeat-x;background-position: 0px -116px;}
+#right{background-image: url(../images/login_bg.jpg);background-repeat: no-repeat;float: left;height: 377px;width: 232px;background-position: -233px 0px;}
+.loginlogo{text-align:left;background-repeat:no-repeat;background-position:left top;height:82px;margin-top:18px;margin-bottom:5px;}
+.logTb td{
+	text-align:left;
+	padding-left:9px;
+	color:#666;
+	padding-bottom: 3px;
+	padding-top: 7px;
+}
+.logTb th{
+	text-align:right;
+	width:62px;
+	font-weight:normal;
+	line-height:14px;
+	color:#666;
+}
+.login-b, .login-b2, .login-b3{
+	background-image: url(../images/login_signin.gif);
+	background-position: 0px 0px;
+	float: left;
+	height: 32px;
+	width: 82px;
+	display: block;
+	border:0;
+	margin-top: 7px;
+	*margin-top: 9px;
+	background-repeat: no-repeat;
+	margin-left: 3px;
+	cursor:pointer!important;
+	cursor:hand;
+}
+.login-b2{
+	background-image: url(../images/login_signin.gif);
+	background-position: 0px -33px;
+}
+.login-b3{
+	background-image: url(../images/login_signin.gif);
+	background-position: 0px -66px;
+}
+.reg{
+	color:#666666;
+	line-height: 14px;
+	margin-top: 25px;
+	*margin-top: 17px;
+}
+.reg a{color:#ba2636;text-decoration:underline;	}
+.reg a:hover{ color:#d73535;text-decoration:underline;}
+#foot{ width:880px; height:40px; clear:both;background-color: #f6f6f6;color: #909090; padding:10px; border-top:1px solid #EBEBEB;}
+.input-border{	
+	border:1px solid #b8b8b8;
+	width:173px;
+	line-height:20px;
+	font-size:12px;
+	height:20px;
+    BACKGROUND: url(../images/user.gif) no-repeat right;
+}
+
+.input-border_pwd{
+	border:1px solid #b8b8b8;
+	width:173px;
+	line-height:20px;
+	font-size:12px;
+	height:20px;
+    BACKGROUND: url(../images/pwd.gif) no-repeat right;
+}
+
+.input-yzm{	
+	border:1px solid #b8b8b8;
+	width:80px;
+	line-height:20px;
+	font-size:12px;
+	height:20px;
+	ime-mode:disabled;
+}

@@ -1,0 +1,32 @@
+@charset "utf-8";
+body{padding:0; margin:0 auto; font-size:12px; font-family:Verdana;background-color: #f8fcff;}
+a{ text-decoration:none}
+a:hover{ text-decoration:underline}
+a.st1{ color:#1278DB}
+a.st2{ color:red}
+.btn1{border: 1px solid #56AD22;background: #DFF1D4;color: green;padding: 2px 5px;font-size: 14px;font-weight: bold;font-family: 微软雅黑, 黑体;}
+.btn2{padding: 0 5px;font-family: 微软雅黑, 黑体;}
+input, textarea, select {font-family: inherit;font-size: inherit;font-weight: inherit;vertical-align:middle;}
+
+#header{width:900px; margin:20px auto 10px auto}
+#header a{ color:#1278DB;}
+
+#search{ width:900px;}
+
+#main{ width:900px; margin:10px auto 0 auto}
+.mtable1 {width: 100%; border-collapse:collapse; color:#6E6D6D}
+.mtable1 td{ border:1px solid #dddddd}
+.table_title{ line-height:30px;font-weight: bold;color: #FD7A0E; text-align:center}
+.table_main{background:#F7F7F7;padding:5px;line-height:30px;padding-left:10px; text-align:center}
+.table_con{color: #6E6D6D;line-height: 25px;}
+.table_con span{color:#D29151; padding:0 0 0 20px}
+.table_info{background:#D6FAC4;padding:5px 10px;line-height:25px;padding-left:10px;}
+.table_freedback{background:#D6FAC4;padding:5px 10px;line-height:25px;padding-left:10px;}
+
+/*名单录入页面*/
+#add{width:900px;}
+#add h2{ color:green; margin:20px 0 0 10px}
+#add ul{ margin:10px 0 0 20px}
+#add ul li{border-bottom: 1px dashed #dddddd; line-height:30px;}
+#add ul li div{width: 120px;float: left;float: left;color: #218E0B;font-style: normal;text-align: right;margin-right: 8px; display:inline-block}
+#add ul li div em{ color:#FF0000; font-weight:normal; font-family:Arial, Helvetica, sans-serif; padding:0 5px}
