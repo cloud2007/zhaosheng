@@ -23,7 +23,7 @@ $txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['u
 	<a href="/home/add">录入名单</a>  |
 	<a href="/home/dengji" style="color:Red;">报名登记</a> |
 	<?php if($txcount>0) {?>
-	<a href="/system/txing.aspx" target="_blank" style="color:Red;"><em>提醒( <?php echo $txcount;?> )</em></a> |
+	<a href="/txing" target="_blank" style="color:Red;"><em>提醒( <?php echo $txcount;?> )</em></a> |
 	<?php }else{?>
 	<a href="javascript:;"><em>提醒( 0 )</em></a> |
 	<?php }?>
