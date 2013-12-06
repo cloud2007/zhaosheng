@@ -166,18 +166,28 @@ class Login extends Controller{
 			)
 		);
 		$res = array();
-		$userid = $rs[0] -> userid;
-		if (!$userid){
+		if($rs){
+			$userid = $rs[0] -> userid;
+			if (!$userid){
+				$res['info']='验证通过';
+				$res['status']='y';
+			}else{
+				$res['info']='用户名已存在';
+				$res['status']='n';
+			}
+			if($_POST['param']){
+				echo json_encode($res);
+			}else{
+				return json_encode($res);
+			}
+		}else{
 			$res['info']='验证通过';
 			$res['status']='y';
-		}else{
-			$res['info']='用户名已存在';
-			$res['status']='n';
-		}
-		if($_POST['param']){
-			echo json_encode($res);
-		}else{
-			return json_encode($res);
+			if($_POST['param']){
+				echo json_encode($res);
+			}else{
+				return json_encode($res);
+			}
 		}
 		
 	}	

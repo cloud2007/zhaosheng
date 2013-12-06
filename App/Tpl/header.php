@@ -18,7 +18,7 @@
 	<a href="/home/dengji" style="color:Red;">报名登记</a> |
 	<a href="/system/txing.aspx" target="_blank"><em>提醒( 0 )</em></a> |
 	<a href="/xiaoqu/lists">校区管理</a> |
-	<a href="/school/btype">学校管理</a> |
+	<a href="/xuexiao/lists">学校管理</a> |
 	<a href="/login/loginout">退出</a>
 	<b style="color:#FB01E6;">电话量今日：0个 &nbsp; 昨日：0个</b>
 </div>
