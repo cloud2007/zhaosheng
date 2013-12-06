@@ -5,18 +5,28 @@
 <title>管理系统</title>
 <script type="text/javascript" src="/Static/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/Static/js/Validform_v5.3.2.js"></script>
+<script type="text/javascript" src="/Static/js/jquery.colorbox.js"></script>
 <link href="/Static/style/reset.css" rel="stylesheet" type="text/css" />
 <link href="/Static/style/style.css" rel="stylesheet" type="text/css" />
+<link href="/Static/style/colorbox.css"  rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+<?php
+$tx = new Tixing();
+$txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['userid']),array('status','=1'),array('tixingtime','<'.time()) )) );
+?>
 <div id="header">
 	<a href="/">所有名单</a> | 
 	<a href="/home">转给我的</a> |
 	<a href="/">转给其他市场的</a>  |
 	<a href="/home/add">录入名单</a>  |
 	<a href="/home/dengji" style="color:Red;">报名登记</a> |
-	<a href="/system/txing.aspx" target="_blank"><em>提醒( 0 )</em></a> |
+	<?php if($txcount>0) {?>
+	<a href="/system/txing.aspx" target="_blank" style="color:Red;"><em>提醒( <?php echo $txcount;?> )</em></a> |
+	<?php }else{?>
+	<a href="javascript:;"><em>提醒( 0 )</em></a> |
+	<?php }?>
 	<a href="/xiaoqu/lists">校区管理</a> |
 	<a href="/xuexiao/lists">学校管理</a> |
 	<a href="/login/loginout">退出</a>

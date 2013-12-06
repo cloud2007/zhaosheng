@@ -20,6 +20,8 @@ input, textarea, select {font-family: inherit;font-size: inherit;font-weight: in
 .table_main{background:#F7F7F7;padding:5px;line-height:30px;padding-left:10px; text-align:center}
 .table_con{color: #6E6D6D;line-height: 25px;}
 .table_con span{color:#D29151; padding:0 0 0 20px}
+.table_con span.hoverlink{color:#6E6D6D; padding:0}
+.table_con a{color:#1278DB;}
 .table_info{background:#D6FAC4;padding:5px 10px;line-height:25px;padding-left:10px;}
 .table_freedback{background:#D6FAC4;padding:5px 10px;line-height:25px;padding-left:10px;}
 

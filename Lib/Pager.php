@@ -223,7 +223,7 @@ class Pager{
  	}
 
  	if($this->Next<$this->PageCount){
- 	$this->LinksHtml.='&nbsp;'.'<a href="'.'PageNo='.$this->Last.'">尾页</a>';
+ 	$this->LinksHtml.='&nbsp;'.'<a href="'.$this->Last.'">尾页</a>';
  	}
  	else{
  	$this->LinksHtml.='&nbsp;尾页';
