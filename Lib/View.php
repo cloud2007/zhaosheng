@@ -13,6 +13,16 @@ class View {
 		if (is_array($data) AND ! empty($data)) {			
 			$this->data = array_merge($this->data, $data);
 		}
+		
+		$headerlogin = new Login();
+		$this -> headeruser = $headerlogin -> getUser();
+		
+		$headerzone = new Zone();
+		$this -> headerzone = $headerzone -> find();
+		
+		$headerusers = new User();
+		$this -> headerusers = $headerusers -> find();
+
 	}
 
 	/**

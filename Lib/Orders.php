@@ -9,6 +9,9 @@ class Orders extends Data {
 			'id' => 'id',
 			'uname' => 'uname',
 			'addid' => 'addid',
+			'oldid' => 'oldid',
+			'reason' => 'reason',
+			'edittime' => 'edittime',
 			'tel' => 'tel',
 			'qqnum' => 'qqnum',
 			'email' => 'email',
@@ -61,6 +64,20 @@ class Orders extends Data {
 			}
 		}else{
 			return '未知';
+		}
+	}
+	
+	public function getoldname(){
+		$addname = new User();
+		if($this->oldid){
+			$rs = $addname -> load($this->oldid);
+			if($rs){
+				return $rs->userid;
+			}else{
+				return '未填写';
+			}
+		}else{
+			return '-';
 		}
 	}
 	

@@ -17,9 +17,10 @@ $tx = new Tixing();
 $txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['userid']),array('status','=1'),array('tixingtime','<'.time()) )) );
 ?>
 <div id="header">
+	<?php echo $headeruser->userid.'你好，欢迎登陆！';?>
 	<a href="/">所有名单</a> | 
-	<a href="/home">转给我的</a> |
-	<a href="/">转给其他市场的</a>  |
+	<a href="/home/neworder">转给我的</a> |
+	<a href="/home/oldorder">转给其他市场的</a>  |
 	<a href="/home/add">录入名单</a>  |
 	<a href="/home/dengji" style="color:Red;">报名登记</a> |
 	<?php if($txcount>0) {?>
@@ -32,25 +33,35 @@ $txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['u
 	<a href="/login/loginout">退出</a>
 	<b style="color:#FB01E6;">电话量今日：0个 &nbsp; 昨日：0个</b>
 </div>
+<form name="" action="/search/" method="post" target="_blank">
 <div id="search">
 	查询：
-	<input type="text" value="" name="keys" id="keys" />
-	<select name="schoolname" id="schoolname">
+	<input type="text" value="" name="wd" />
+	<!--select name="schoolname" id="schoolname">
 		<option value="">选择学校</option>
-		<option value="">◆◆◆◆四川市场 ◆◆◆◆</option>
+		<?php foreach($headerzone as $v){?>
+		<option value="">◆◆◆◆ <?php echo $v->zonename;?> ◆◆◆◆</option>
+			<?php foreach($v->getschoollist() as $vv){?>
+			<option value="<?php echo $vv->id;?>">  ---- <?php echo $vv->schoolname;?></option>
+			<?php }?>
+		<?php }?>
 	</select>
 	<select id="userids" name="userids">
-		<option value="-2"  selected="selected">所有老师</option>
+		<option value=""  selected="selected">所有人</option>
+		<?php foreach($headerusers as $v){?>
+		<option value="<?php echo $v->id;?>"><?php echo $v->userid;?></option>
+		<?php }?>
 	</select>
-	<select id="schoolids" name="schoolids">
+	<!--select id="schoolids" name="schoolids">
 		<option value="-2"  selected="selected">==录入方式==</option>
 		<option value="0" >后台录入</option>
 		<option value="1" >学生在线报名</option>
-	</select>
-	<select id="baomings" name="baomings">
-		<option value="-2"  selected="selected">==电话情况==</option>
+	</select-->
+	<select name="istel">
+		<option value=""  selected="selected">==电话情况==</option>
 		<option value="0" >未电话</option>
 		<option value="1" >已打电话</option>
 	</select>
-	<input type="button" value="查找" name="Text1" onclick="skeys();" class="btn2" />
+	<input type="submit" value="查找" name="Text1" onclick="skeys();" class="btn2" />
 </div>
+</form>

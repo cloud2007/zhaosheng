@@ -8,6 +8,7 @@ class Home extends Controller{
 		$this -> modelzone = new Zone();
 		$this -> modelbeizhu = new Beizhu();
 		$this -> modeltixing = new Tixing();
+		$this -> modeluser = new User();
 	}
 	
 	function index($id=NULL) {
@@ -52,9 +53,83 @@ class Home extends Controller{
 		$PageNum=($currentpage-1)*$pagesize;
 		$options = array();
 		$whereand = array();
+		$whereand[] = array('addid','='.$this->user->id);
 		$options['limit']="{$PageNum},{$pagesize}";
+		$options['whereAnd']=$whereand;
 		$totalcount = $this -> model -> count($options);
 		$pagerData=$pager->getPagerData($totalcount,$currentpage,'/home/index/',4,$pagesize);//参数记录数 当前页数 链接地址 显示样式 每页数量
+		$view -> set('pagerData',$pagerData);
+		$view -> set('datalist',$this -> model -> find($options));
+
+		$view -> renderHtml($header.$view.$footer);
+	}
+	
+	function zhuanyi($id=NULL){
+		//处理转移
+		if($_POST['id']){
+			$this -> model -> load($_POST['id']);
+			$this -> model -> addid = $_POST['userid'];
+			$this -> model -> oldid = $this -> user -> id;
+			$this -> model -> reason = $_POST['reason'];
+			$this -> model -> edittime = time();			
+			$this -> model -> save();
+			ShowMsg('处理完毕','/');
+			die;
+		}
+		$header = new View('header');
+		$footer = new View('footer');
+		$view = new View('zhuanyi');
+		$view -> set ('datainfo',$this -> model -> load($id[3]));
+		$view -> set ('datauser',$this -> modeluser -> find() );
+		$view -> renderHtml($header.$view.$footer);
+	}
+	
+	function oldorder($id=NULL) {
+		$header = new View('header');
+		$footer = new View('footer');
+		$view = new View('index');
+		
+		$pager = new Pager();
+		$pagesize = 10;
+		if(isset($id[3])&&is_numeric($id[3])){
+			$currentpage=$id[3];
+		}else{
+			$currentpage=1;
+		}
+		$PageNum=($currentpage-1)*$pagesize;
+		$options = array();
+		$whereand = array();
+		$whereand[] = array('oldid','='.$this->user->id);
+		$options['limit']="{$PageNum},{$pagesize}";
+		$options['whereAnd']=$whereand;
+		$totalcount = $this -> model -> count($options);
+		$pagerData=$pager->getPagerData($totalcount,$currentpage,'/home/oldorder/',4,$pagesize);//参数记录数 当前页数 链接地址 显示样式 每页数量
+		$view -> set('pagerData',$pagerData);
+		$view -> set('datalist',$this -> model -> find($options));
+
+		$view -> renderHtml($header.$view.$footer);
+	}	
+
+	function neworder($id=NULL) {
+		$header = new View('header');
+		$footer = new View('footer');
+		$view = new View('index');
+		
+		$pager = new Pager();
+		$pagesize = 10;
+		if(isset($id[3])&&is_numeric($id[3])){
+			$currentpage=$id[3];
+		}else{
+			$currentpage=1;
+		}
+		$PageNum=($currentpage-1)*$pagesize;
+		$options = array();
+		$whereand = array();
+		$whereand[] = array('oldid','<>'.$this->user->id);
+		$options['limit']="{$PageNum},{$pagesize}";
+		$options['whereAnd']=$whereand;
+		$totalcount = $this -> model -> count($options);
+		$pagerData=$pager->getPagerData($totalcount,$currentpage,'/home/neworder/',4,$pagesize);//参数记录数 当前页数 链接地址 显示样式 每页数量
 		$view -> set('pagerData',$pagerData);
 		$view -> set('datalist',$this -> model -> find($options));
 
