@@ -13,6 +13,8 @@ class User extends Data {
 			'email' => 'email',
 			'qq' => 'qq',
 			'group' => 'group',
+			'grant' => 'grant',
+			'is_zz' => 'is_zz',
 			'creattime' => 'creattime',
 			'logintime' => 'logintime',
 			),
@@ -27,6 +29,21 @@ class User extends Data {
 
 	public function creattime() {
 		return $this->dateConvert($this->creattime);
+	}
+	
+	public function logintime() {
+		return date('Y-m-d H:i:s',$this->logintime);
+	}
+	
+	public function group(){
+		$group = new Groups();
+		try{
+			$group -> load($this -> group);
+			return $group->groupname;
+		}catch (Exception $e) {
+			return '-';
+		}
+		
 	}
 
 }

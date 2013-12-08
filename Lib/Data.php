@@ -341,8 +341,8 @@ class Data {
 	}
 
         public function signs($where) {
-                $this->connection = DataConnection::getConnection();
-		$this->sql = "update `" . $this->table . "` set `is_use` = 0 where {$where}";
+        $this->connection = DataConnection::getConnection();
+		$this->sql = "update `" . $this->table . "` set `is_zz` = 0 where {$where}";
 		$this->query();
 		$this->clean();
 		return $this;
