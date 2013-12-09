@@ -12,7 +12,7 @@
 <div id="con">
 	<div id="left"></div>
 	<div id="login">
-		<div class="loginlogo"><img src="/static/images/login_logo.gif" /></div>
+		<div class="loginlogo"><img src="/Static/images/login_logo.gif" /></div>
             <form name="myform" action="/login/loginaction" method="post">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" class="logTb">
                 <tr>

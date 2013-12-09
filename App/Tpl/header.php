@@ -28,10 +28,12 @@ $txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['u
 	<?php }else{?>
 	<a href="javascript:;"><em>提醒( 0 )</em></a> |
 	<?php }?>
+	<?php if ($headeruser->grant==1){?>
 	<a href="/xiaoqu/lists">校区管理</a> |
 	<a href="/xuexiao/lists">学校管理</a> |
 	<a href="/users/grouplists">分组管理</a> |
 	<a href="/users/index">用户管理</a> |
+	<?php }?>
 	<a href="/login/loginout">退出</a>
 	<!--b style="color:#FB01E6;">电话量今日：0个 &nbsp; 昨日：0个</b-->
 </div>

@@ -2,7 +2,7 @@
 //系统
 $requestArray = array_filter(explode('/',$_SERVER['PATH_INFO']));
 
-$Controller = isset($requestArray[1]) ? $requestArray[1] : 'Home';
+$Controller = isset($requestArray[1]) ? ucfirst($requestArray[1]) : 'Home';
 $Method = isset($requestArray[2]) ? $requestArray[2] : 'index';
 
 if ( file_exists ( CONTROLLER_PATH . '/' . $Controller . '.php' ) ){

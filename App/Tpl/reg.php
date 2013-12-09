@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<form name="myform" id="regform" action="/login/regaction" method="post">
+<form name="myform" id="regform" action="/login/regaction" method="post" autocomplete="off">
 <div id="con">
 	<div class="title"><b>管理系统--用户注册</b></div>
 	<ul>

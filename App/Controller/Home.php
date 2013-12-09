@@ -125,6 +125,7 @@ class Home extends Controller{
 		$PageNum=($currentpage-1)*$pagesize;
 		$options = array();
 		$whereand = array();
+		$whereand[] = array('addid','='.$this->user->id);
 		$whereand[] = array('oldid','<>'.$this->user->id);
 		$options['limit']="{$PageNum},{$pagesize}";
 		$options['whereAnd']=$whereand;

@@ -13,8 +13,8 @@ class Config {
         $keys = explode('.', $key);
         $file = current($keys);
         if (isset(self::$conf[$file])) $rs = self::$conf[$file];
-        elseif (is_file(ROOT_PATH . "/config/{$file}.php")) {
-            $rs = self::$conf[$file] = include_once(ROOT_PATH . "/config/{$file}.php");
+        elseif (is_file(ROOT_PATH . "/Config/{$file}.php")) {
+            $rs = self::$conf[$file] = include_once(ROOT_PATH . "/Config/{$file}.php");
         } else {
             return NULL;
             //throw new Exception("file [{$file}] not found in config dir");

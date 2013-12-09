@@ -13,6 +13,7 @@ class Login extends Controller{
 	}
 	
 	function login() {
+		if($this -> getUser()) header("Location:/");
 		$view = new View('login');
 		$view -> renderHtml($view);
 	}
@@ -58,8 +59,10 @@ class Login extends Controller{
 	}
 	
 	function reg(){
+		$header = new View('header');
+		$footer = new View('footer');
 		$view = new View('reg');
-		$view -> renderHtml($view);
+		$view -> renderHtml($header.$view.$footer);
 	}
 	
 	//注册页面
@@ -88,6 +91,7 @@ class Login extends Controller{
 		$user -> qq = $_POST['qq'];
 		$user -> userid = $_POST['userid'];
 		$user -> group = $_POST['group'];
+		$user -> grant = 2;
 		$user -> creattime = time();
 		$user -> logintime = time();
 		$user -> save();
