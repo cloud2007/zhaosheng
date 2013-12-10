@@ -16,7 +16,7 @@ li{list-style:outside;list-style:none;}
 input,img,textarea{vertical-align:middle; outline:none;}
 
 
-.Validform_checktip{margin-left:10px;}
+.Validform_checktip{margin-left:10px; color:#FF0000;}
 .Validform_wrong {
 color: red;
 padding-left: 20px;

@@ -39,14 +39,20 @@ class Home extends Controller{
 			die;
 		}
 		
+		//搜索部分
+		$arr = explode('-',$id[3]);
+		$wd=$_POST['wd']?$_POST['wd']:substr($arr[0],1);
+		$status=$_POST['status']?$_POST['status']:substr($arr[1],1);
+		$conf=array('wd'=>$wd,'status'=>$status);
+		
 		$header = new View('header');
 		$footer = new View('footer');
 		$view = new View('index');
 		
 		$pager = new Pager();
 		$pagesize = 10;
-		if(isset($id[3])&&is_numeric($id[3])){
-			$currentpage=$id[3];
+		if(isset($id[4])&&is_numeric($id[4])){
+			$currentpage=$id[4];
 		}else{
 			$currentpage=1;
 		}
@@ -54,12 +60,16 @@ class Home extends Controller{
 		$options = array();
 		$whereand = array();
 		$whereand[] = array('addid','='.$this->user->id);
+		if($wd)$whereand[] = array('uname',"like '%{$wd}%'");
+		if($status)$whereand[] = array('status',"={$status}");
 		$options['limit']="{$PageNum},{$pagesize}";
 		$options['whereAnd']=$whereand;
 		$totalcount = $this -> model -> count($options);
-		$pagerData=$pager->getPagerData($totalcount,$currentpage,'/home/index/',4,$pagesize);//参数记录数 当前页数 链接地址 显示样式 每页数量
+		$pagerData=$pager->getPagerData($totalcount,$currentpage,"/home/index/w{$wd}-s{$status}/",4,$pagesize);//参数记录数 当前页数 链接地址 显示样式 每页数量
 		$view -> set('pagerData',$pagerData);
 		$view -> set('datalist',$this -> model -> find($options));
+		
+		$header -> set('conf',$conf);
 
 		$view -> renderHtml($header.$view.$footer);
 	}
