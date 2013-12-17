@@ -13,8 +13,10 @@
 
 <body>
 <?php
+if($_SESSION['userid']){
 $tx = new Tixing();
 $txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['userid']),array('status','=1'),array('tixingtime','<'.time()) )) );
+}
 ?>
 <div id="header">
 	<?php echo $headeruser->userid.'你好，欢迎登陆！';?>
@@ -40,7 +42,7 @@ $txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['u
 <form name="" action="/home/index" method="post">
 <div id="search">
 	查询：
-	<input type="text" value="" name="wd" value="<?php echo $conf['wd'];?>" />
+	<input type="text" name="wd" value="<?php echo $conf['wd'];?>" />
 	<!--select name="schoolname" id="schoolname">
 		<option value="">选择学校</option>
 		<?php foreach($headerzone as $v){?>

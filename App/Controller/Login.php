@@ -12,6 +12,10 @@ class Login extends Controller{
         }
 	}
 	
+	function index() {
+		$this->login();
+	}
+	
 	function login() {
 		if($this -> getUser()) header("Location:/");
 		$view = new View('login');

@@ -109,6 +109,24 @@ class Users extends Controller{
 		ShowMsg('处理完毕','/users');
 		die;
 	}
+	
+	//设置组长
+	function ajax_admin($id){
+		$this -> modeluser -> load($id[3]);
+		$this -> modeluser -> grant = 1;
+		$this -> modeluser -> save();
+		ShowMsg('处理完毕','/users');
+		die;
+	}
+	//取消组长
+	function ajax_admin_c($id){
+		$this -> modeluser -> load($id[3]);
+		$this -> modeluser -> grant = 0;
+		$this -> modeluser -> save();
+		ShowMsg('处理完毕','/users');
+		die;
+	}
+	
 	//重设密码
 	function ajax_setpwd($id){
 		$this -> modeluser -> load($id[3]);

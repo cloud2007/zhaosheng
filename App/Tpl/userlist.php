@@ -17,7 +17,7 @@
 			<td><?php echo $v->grant;?></td>
 			<td><?php echo $v->group();?></td>
 			<td><?php echo $v->logintime();?></td>
-			<td><?php if($v->is_zz==1){?><a class="st2" href="/users/ajax_zuzhang_c/<?php echo $v->id;?>">取消组长</a><?php }else{?><a class="st2" href="/users/ajax_zuzhang/<?php echo $v->id;?>">设为组长</a><?php }?> | <a class="st1 inline" href="/users/ajax_group/<?php echo $v->id;?>">移动分组</a> | <a class="st1" href="/users/ajax_setpwd/<?php echo $v->id;?>">重设密码</a></td>
+			<td><?php if($v->grant==1){?><a class="st2" href="/users/ajax_admin_c/<?php echo $v->id;?>">取消管理</a><?php }else{?><a class="st2" href="/users/ajax_admin/<?php echo $v->id;?>">设管理员</a><?php }?> | <?php if($v->is_zz==1){?><a class="st2" href="/users/ajax_zuzhang_c/<?php echo $v->id;?>">取消组长</a><?php }else{?><a class="st2" href="/users/ajax_zuzhang/<?php echo $v->id;?>">设为组长</a><?php }?> | <a class="st1 inline" href="/users/ajax_group/<?php echo $v->id;?>">移动分组</a> | <a class="st1" href="/users/ajax_setpwd/<?php echo $v->id;?>">重设密码</a></td>
 		</tr>
 		<?php }?>
 		<tr class="table_con">
