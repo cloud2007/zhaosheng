@@ -69,6 +69,14 @@ class Login extends Controller{
 		$view -> renderHtml($header.$view.$footer);
 	}
 	
+	function pwd(){
+		$header = new View('header');
+		$footer = new View('footer');
+		$view = new View('edit');
+		$view -> set('datainfo',$this -> getUser());
+		$view -> renderHtml($header.$view.$footer);
+	}
+	
 	//注册页面
 	function regaction() {
 		if(!$_POST['userid'] || !$_POST['userpwd1'] || !$_POST['userpwd2'] || !$_POST['tel']){
@@ -100,6 +108,26 @@ class Login extends Controller{
 		$user -> logintime = time();
 		$user -> save();
 		ShowMsg('注册成功，请登录','/');
+		die;
+	}
+	
+	//注册页面
+	function editaction() {
+		
+		if( $_POST['userpwd1'] != $_POST['userpwd2'] ){
+			ShowMsg('两次输入密码不一致','/login/pwd');
+			die;
+		}
+		
+		$user = new User();
+		$user -> load($_POST['id']);
+		if($_POST['userpwd1']){$user -> userpwd = md5($_POST['userpwd1']);}
+		$user -> tel = $_POST['tel'];
+		$user -> email = $_POST['email'];
+		$user -> qq = $_POST['qq'];
+		$user -> save();
+		$this -> exitUser();
+		ShowMsg('编辑成功，请重新登录','/');
 		die;
 	}
 	

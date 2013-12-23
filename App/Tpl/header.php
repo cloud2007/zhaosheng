@@ -19,7 +19,7 @@ $txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['u
 }
 ?>
 <div id="header">
-	<?php echo $headeruser->userid.'你好，欢迎登陆！';?>
+	<?php echo $headeruser->userid.'你好！';?>
 	<a href="/">所有名单</a> | 
 	<a href="/home/neworder">转给我的</a> |
 	<a href="/home/oldorder">转给其他市场的</a>  |
@@ -35,7 +35,9 @@ $txcount = $tx -> count( array('whereAnd'=>array(array('userid','='.$_SESSION['u
 	<a href="/xuexiao/lists">学校管理</a> |
 	<a href="/users/grouplists">分组管理</a> |
 	<a href="/users/index">用户管理</a> |
+	<a href="/login/reg">注册新用户</a> |
 	<?php }?>
+	<a href="/login/pwd">我的账户</a> |
 	<a href="/login/loginout">退出</a>
 	<!--b style="color:#FB01E6;">电话量今日：0个 &nbsp; 昨日：0个</b-->
 </div>
