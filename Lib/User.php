@@ -45,6 +45,13 @@ class User extends Data {
 		}
 		
 	}
+	
+	function grant(){
+		if($this -> grant == 1){
+			return '管理员';
+		}
+		return '普通用户';
+	}
 
 }
 ?>
