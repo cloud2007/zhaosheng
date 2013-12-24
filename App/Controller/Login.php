@@ -66,6 +66,9 @@ class Login extends Controller{
 		$header = new View('header');
 		$footer = new View('footer');
 		$view = new View('reg');
+		$obj = new Groups();
+		$group = $obj->find();
+		$view -> set('group',$group);
 		$view -> renderHtml($header.$view.$footer);
 	}
 	
@@ -77,8 +80,34 @@ class Login extends Controller{
 		$view -> renderHtml($header.$view.$footer);
 	}
 	
+	function modify($id){
+		$header = new View('header');
+		$footer = new View('footer');
+		$view = new View('modify');
+		$obj = new Groups();
+		$group = $obj->find();
+		$view -> set('group',$group);
+		$user = new User();
+		$view -> set('datainfo',$user -> load($id[3]));
+		$view -> renderHtml($header.$view.$footer);
+	}
+	
 	//注册页面
 	function regaction() {
+		if($_POST['id']){
+			$user = new User();
+			$user -> load($_POST['id']);
+			if($_POST['userpwd1'])$user -> userpwd = md5($_POST['userpwd1']);
+			$user -> tel = $_POST['tel'];
+			$user -> email = $_POST['email'];
+			$user -> qq = $_POST['qq'];
+			$user -> userid = $_POST['userid'];
+			$user -> group = $_POST['group'];
+			$user -> grant = 2;
+			$user -> save();
+			ShowMsg('编辑成功！','/users');
+			die;
+		}
 		if(!$_POST['userid'] || !$_POST['userpwd1'] || !$_POST['userpwd2'] || !$_POST['tel']){
 			ShowMsg('填写不完整','/login/reg');
 			die;
@@ -96,6 +125,7 @@ class Login extends Controller{
 		}
 		
 		$user = new User();
+		$user -> id = $_POST['id'];
 		$user -> userid = $_POST['userid'];
 		$user -> userpwd = md5($_POST['userpwd1']);
 		$user -> tel = $_POST['tel'];
